@@ -1,0 +1,8 @@
+.background{
+    -fx-background-image:url("../../assets/LoginBG.png");
+
+}
+
+.vbox_background_right{
+    -fx-background-image:url("../../assets/boxBG.png");
+}

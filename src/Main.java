@@ -1,5 +1,5 @@
 import javafx.application.Application;
-import views.homeLoginPage;
+import views.homeLogin.homeLoginPage;
 
 public class Main{
     public static void main(String[] args){

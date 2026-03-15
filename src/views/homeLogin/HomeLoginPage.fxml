@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@homeLoginStyle.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <HBox prefHeight="1040.0" prefWidth="626.0" style="-fx-background-radius: 25px;" styleClass="vbox_background_right" stylesheets="@homeLoginStyle.css" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+         <children>
+            <VBox minWidth="880.0" prefHeight="960.0" prefWidth="498.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="259.0" prefWidth="880.0" text="Who are you?" textAlignment="CENTER" textFill="#5e0006" wrapText="true">
+                     <font>
+                        <Font name="Alexandria Bold" size="72.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="176.0" prefWidth="880.0">
+                     <children>
+                        <Button fx:id="DoctorButton" mnemonicParsing="false" prefHeight="111.0" prefWidth="626.0" style="-fx-background-radius: 50; -fx-background-color: A2373E;" text="Doctor" textFill="#f7e9db">
+                           <font>
+                              <Font name="Alexandria Regular" size="49.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="60.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="198.0" prefWidth="880.0">
+                     <children>
+                        <Button fx:id="PatientButton" mnemonicParsing="false" prefHeight="111.0" prefWidth="626.0" style="-fx-background-radius: 50px; -fx-background-color: A2373E;" text="Patient" textFill="#f7e9db">
+                           <font>
+                              <Font name="Alexandria Bold" size="49.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children></VBox>
+         </children>
+         <padding>
+            <Insets bottom="40.0" right="23.0" top="40.0" />
+         </padding>
+      </HBox>
+   </right>
+   <left>
+      <VBox prefHeight="1080.0" prefWidth="916.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="185.0" prefWidth="884.0" text="WELCOME" textFill="WHITE">
+               <font>
+                  <Font name="Alexandria ExtraBold" size="150.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" top="120.0" />
+               </padding>
+            </Label>
+            <Label prefHeight="240.0" prefWidth="790.0" text="Your health is our priority! By inputting your symptoms now, you help our doctors prepare for your visit. Patients with severe symptoms are prioritized to ensure everyone receives the right care at the right time." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Alexandria Regular" size="31.0" />
+               </font>
+               <padding>
+                  <Insets left="60.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
