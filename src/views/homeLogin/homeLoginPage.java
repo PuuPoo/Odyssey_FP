@@ -10,12 +10,13 @@ public class homeLoginPage extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Note the capital 'P' in BorderPane
         Parent root = FXMLLoader.load(getClass().getResource("/views/homeLogin/HomeLoginPage.fxml"));
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
 
     }
 }
