@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -18,14 +19,14 @@
             <children>
                 <VBox minWidth="880.0" prefHeight="960.0" prefWidth="498.0">
                     <children>
-                        <Label alignment="CENTER" prefHeight="259.0" prefWidth="880.0" text="SIGN IN" textAlignment="CENTER" textFill="#5e0006" wrapText="true">
+                        <Label alignment="CENTER" prefHeight="223.0" prefWidth="880.0" text="SIGN IN" textAlignment="CENTER" textFill="#5e0006" wrapText="true">
                             <font>
                                 <Font name="Alexandria Bold" size="72.0" />
                             </font>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="156.0" prefWidth="880.0">
                      <children>
-                        <TextField prefHeight="85.0" prefWidth="757.0" promptText="Username" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                        <TextField fx:id="usernameTextField" prefHeight="85.0" prefWidth="757.0" promptText="Username" style="-fx-background-radius: 50; -fx-border-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="43.0" />
                            </font>
@@ -34,16 +35,25 @@
                         </HBox>
                   <HBox alignment="CENTER" prefHeight="124.0" prefWidth="880.0">
                      <children>
-                        <TextField prefHeight="85.0" prefWidth="757.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                        <PasswordField fx:id="passwordTextField" prefHeight="85.0" prefWidth="757.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="43.0" />
                            </font>
-                        </TextField>
+                        </PasswordField>
                      </children>
                   </HBox>
+                  <VBox prefHeight="69.0" prefWidth="880.0">
+                     <children>
+                        <Label fx:id="loginMessage" alignment="CENTER" prefHeight="77.0" prefWidth="878.0" textAlignment="CENTER" textFill="RED">
+                           <font>
+                              <Font name="Alexandria Regular" size="33.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                         <HBox alignment="CENTER" prefHeight="198.0" prefWidth="880.0">
                             <children>
-                                <Button fx:id="PatientButton" mnemonicParsing="false" onAction="#switchToHomeLoginPage" prefHeight="111.0" prefWidth="626.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="hover_Button" stylesheets="@doctorLoginPage.css" text="Login" textFill="#f7e9db">
+                                <Button fx:id="PatientButton" mnemonicParsing="false" onAction="#doctorLoginButtonOnAction" prefHeight="111.0" prefWidth="626.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="hover_Button" stylesheets="@doctorLoginPage.css" text="Login" textFill="#f7e9db">
                                     <font>
                                         <Font name="Alexandria Bold" size="49.0" />
                                     </font>
