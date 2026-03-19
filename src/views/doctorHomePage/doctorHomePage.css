@@ -1,0 +1,16 @@
+.background{
+    -fx-background-image:url("../../assets/LoginBG.png");
+
+}
+
+.vbox_background_right{
+    -fx-background-image:url("../../assets/boxBG.png");
+}
+
+.hover_Button{
+    -fx-background-color: D35832;
+}
+
+.hover_Button:hover{
+    -fx-background-color: #362b2b;
+}

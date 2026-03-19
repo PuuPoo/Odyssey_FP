@@ -13,12 +13,19 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.HashMap;
 
-public class Controller {
+
+public class Controller  {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private final JDBC DATABASE = new JDBC();
+
+
 
     @FXML
     private TextField usernameTextField;
@@ -52,13 +59,35 @@ public class Controller {
         stage.show();
     }
 
+    public void switchToDoctorHomePage(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../views/doctorHomePage/DoctorHomePage.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-    public void doctorLoginButtonOnAction(ActionEvent e){
-        if(!usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
-            loginMessage.setText("Logging in");
+
+    public void doctorLoginButtonOnAction(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        //Get data from FXML Textfield
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+
+        //Creates the database and puts the information into the hashmap
+        DATABASE.createDoctorLoginConnection();
+        HashMap<String, String> loginInformation = DATABASE.getDoctorLogin();
+
+        //Checks if the text field contains the right information
+        if(loginInformation.containsKey(username) && loginInformation.get(username).equals(password)){
+            switchToDoctorHomePage(event);
         }
+        //Checks if the text field contains no information
+        else if (usernameTextField.getText().isBlank() && passwordTextField.getText().isBlank()) {
+            loginMessage.setText("Missing information!");
+        }
+        //Checks if the text field contains incorrect information
         else{
-            loginMessage.setText("nope");
+            loginMessage.setText("Incorrect username or password!");
         }
     }
 }

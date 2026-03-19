@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.HashMap;
 
 public class JDBC {
-    private final HashMap<String, String>  DOCTORLOGIN= new HashMap<>();
+    private final HashMap<String, String>  DOCTORLOGIN = new HashMap<>();
 
 
     public void createDoctorLoginConnection() throws ClassNotFoundException, SQLException{
