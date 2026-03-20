@@ -9,7 +9,7 @@ public class JDBC {
 
     public void createDoctorLoginConnection() throws ClassNotFoundException, SQLException{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Odyssey_Data", "root", "Killerman1");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Odyssey_Data", "root", "testArea1");
         System.out.println("SQL Database for Doctor Initialize");
 
         //statement class for query execution to SQL
