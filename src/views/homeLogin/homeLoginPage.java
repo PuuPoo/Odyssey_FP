@@ -14,6 +14,8 @@ public class homeLoginPage extends Application {
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
+        primaryStage.setTitle("Odyssey");
         primaryStage.show();
 
 

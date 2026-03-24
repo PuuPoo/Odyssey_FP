@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@doctorHomePage.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
-   <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="vbox_foreground" stylesheets="@doctorHomePage.css" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets left="30.0" right="30.0" top="30.0" />
-         </BorderPane.margin>
-      </VBox>
-   </center>
-</BorderPane>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1580.0" prefWidth="1920.0" styleClass="background" stylesheets="@doctorHomePage.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1580.0" prefWidth="1920.0" styleClass="background" stylesheets="@doctorHomePage.css">
+         <children>
+            <VBox prefHeight="1578.0" prefWidth="1916.0" style="-fx-background-radius: 25; -fx-background-radius: 25;" styleClass="vbox_foreground" stylesheets="@doctorHomePage.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="30.0">
+               <children>
+                  <HBox prefHeight="204.0" prefWidth="1845.0">
+                     <children>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME" wrappingWidth="470.25">
+                           <font>
+                              <Font name="Alexandria Bold" size="83.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="60.0" top="60.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="1785.0">
+                     <children>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: " wrappingWidth="136.3949966430664">
+                           <font>
+                              <Font name="Alexandria Regular" size="40.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="doctorName" prefHeight="50.0" prefWidth="976.0" textFill="#5e0006">
+                           <font>
+                              <Font name="Alexandria Regular" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="60.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

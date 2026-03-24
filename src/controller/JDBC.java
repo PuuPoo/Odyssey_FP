@@ -5,8 +5,9 @@ import java.util.HashMap;
 
 public class JDBC {
     private final HashMap<String, String>  DOCTORLOGIN = new HashMap<>();
+    private final HashMap<String, String> DOCTORUSERNAME = new HashMap<>();
 
-
+    //Doctor login information (Gmail and Password)
     public void createDoctorLoginConnection() throws ClassNotFoundException, SQLException{
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Odyssey_Data", "root", "testArea1");
@@ -35,5 +36,37 @@ public class JDBC {
     //returns the hashmap results
     public HashMap<String, String> getDoctorLogin(){
         return this.DOCTORLOGIN;
+    }
+
+
+    //Doctor login information (Gmail and Username)
+    public void createDoctorUsernameConnection() throws ClassNotFoundException, SQLException{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Odyssey_Data", "root", "testArea1");
+        System.out.println("SQL Database for Doctor Username Initialize");
+
+        //statement class for query execution to SQL
+        Statement state = connection.createStatement();
+
+        //query to SQL
+        ResultSet rs = state.executeQuery("SELECT * FROM `Odyssey_Data`.`doctor_information_name`");
+
+
+        //While result of the table still has next keep inputting into the hashmap
+        while(rs.next()){
+            String doctorGmail = rs.getString("doctor_GMAIL");
+            String doctorUsername = rs.getString("doctor_USERNAME");
+            this.DOCTORUSERNAME.put(doctorGmail, doctorUsername);
+        }
+
+        //Close all connections for memory efficiency
+        rs.close();
+        state.close();
+        connection.close();
+    }
+
+    //returns the hashmap results
+    public HashMap<String, String> getDoctorUsername(){
+        return this.DOCTORUSERNAME;
     }
 }
