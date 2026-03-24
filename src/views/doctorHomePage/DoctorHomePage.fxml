@@ -4,12 +4,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@doctorHomePage.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <center>
-      <VBox maxWidth="1850.0" prefHeight="200.0" prefWidth="1874.0" styleClass="vbox_background_right" stylesheets="@doctorHomePage.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="vbox_foreground" stylesheets="@doctorHomePage.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets top="30.0" />
+            <Insets left="30.0" right="30.0" top="30.0" />
          </BorderPane.margin>
       </VBox>
    </center>

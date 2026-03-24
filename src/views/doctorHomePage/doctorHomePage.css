@@ -1,10 +1,11 @@
 .background{
-    -fx-background-image:url("../../assets/LoginBG.png");
+    -fx-background-color: rgb(94,0,6);
 
 }
 
-.vbox_background_right{
-    -fx-background-image:url("../../assets/boxBG.png");
+.vbox_foreground{
+    -fx-background-color: rgb(249,238,225);
+
 }
 
 .hover_Button{

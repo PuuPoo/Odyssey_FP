@@ -4,7 +4,7 @@
 }
 
 .vbox_background_right{
-    -fx-background-image:url("../../assets/boxBG.png");
+    -fx-background-color: rgb(249,238,225);
 }
 
 .hover_Button{
