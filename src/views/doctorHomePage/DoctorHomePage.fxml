@@ -13,7 +13,7 @@
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1580.0" prefWidth="1920.0" styleClass="background" stylesheets="@doctorHomePage.css">
          <children>
-            <VBox prefHeight="1578.0" prefWidth="1916.0" style="-fx-background-radius: 25; -fx-background-radius: 25;" styleClass="vbox_foreground" stylesheets="@doctorHomePage.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="30.0">
+            <VBox prefHeight="1504.0" prefWidth="1845.0" style="-fx-background-radius: 25; -fx-background-radius: 25;" styleClass="vbox_foreground" stylesheets="@doctorHomePage.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="30.0">
                <children>
                   <HBox prefHeight="204.0" prefWidth="1845.0">
                      <children>
@@ -44,6 +44,38 @@
                         <Insets left="60.0" />
                      </VBox.margin>
                   </HBox>
+                  <HBox layoutX="70.0" layoutY="214.0" prefHeight="40.0" prefWidth="1785.0">
+                     <children>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:        " wrappingWidth="136.3949966430664">
+                           <font>
+                              <Font name="Alexandria Regular" size="40.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Text>
+                        <Label fx:id="doctorID" prefHeight="50.0" prefWidth="976.0" textFill="#5e0006">
+                           <font>
+                              <Font name="Alexandria Regular" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="60.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <VBox prefHeight="700.0" prefWidth="100.0">
+                     <VBox.margin>
+                        <Insets left="60.0" right="60.0" top="150.0" />
+                     </VBox.margin>
+                     <children>
+                        <ScrollPane prefHeight="706.0" prefWidth="1725.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="1724.0" />
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
          </children></AnchorPane>
