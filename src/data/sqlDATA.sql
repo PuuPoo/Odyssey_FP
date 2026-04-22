@@ -12,10 +12,9 @@ CREATE TABLE doctor_login_information(
 
 INSERT INTO doctor_login_information(doctor_GMAIL, doctor_PASSWORD)
 VALUES
-('Nizar.Ramadhan@gmail.com', 'KansupKapan'),
-('Kayla.Limaran@gmail.com', 'Snak3'),
-('DoctorSigma.Agie@gmail.com', 'bestDoktor61'),
-('Louis.Wibowo@gmail.com', 'GermanGlory88');
+('doctor1@gmail.com', 'Password'),
+('doctor2@gmail.com', 'Password'),
+('doctor3@gmail.com', 'Password');
 
 
 -- Doctor Information (Name)
@@ -28,8 +27,26 @@ CREATE TABLE doctor_information_name(
 
 INSERT INTO doctor_information_name(doctor_GMAIL, doctor_USERNAME)
 VALUES
-('Nizar.Ramadhan@gmail.com', 'Dr. Nizar Ramadhan'),
-('Kayla.Limaran@gmail.com', 'Dr. Kayla Limaran'),
-('DoctorSigma.Agie@gmail.com', 'Dr. Agie Winata'),
-('Louis.Wibowo@gmail.com', 'Dr. Louis Wibowo');
+('doctor1@gmail.com', 'Dr. Nizar Ramadhan'),
+('doctor2@gmail.com', 'Dr. Kayla Limaran'),
+('doctor3@gmail.com', 'Dr. Agie Winata');
+
+
+-- Doctor Information (Patient)
+CREATE TABLE doctor_information_patients(
+    doctor_GMAIL VARCHAR(50),
+    patient_name VARCHAR(50),
+    severity INT,
+    PRIMARY KEY (doctor_GMAIL, patient_name),
+	FOREIGN KEY (doctor_GMAIL) REFERENCES doctor_login_information(doctor_GMAIL)
+);
+
+-- Doctor Information Patients
+INSERT INTO doctor_information_patients(doctor_GMAIL, patient_name, severity)
+VALUES
+('doctor1@gmail.com', 'Cassian Thorne', 3),
+('doctor1@gmail.com', 'Elara Vance', 2),
+('doctor1@gmail.com', 'Julian Sterling', 1),
+('doctor1@gmail.com', 'Mira Holloway', 9),
+('doctor1@gmail.com', 'Timothy Cath', 9);
 

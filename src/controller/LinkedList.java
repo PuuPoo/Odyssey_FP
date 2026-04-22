@@ -4,21 +4,25 @@ public class LinkedList {
     Node head;
 
     static class Node{
-        int data;
+        String gmail;
+        String patient;
+        int severity;
         Node next;
 
-        Node(int d){ //Constructor
-            data = d;
+        Node(String gmail, String patient, int severity){ //Constructor
+            this.gmail = gmail;
+            this.patient = patient;
+            this.severity = severity;
             next = null;
         }
     }
 
-    public static LinkedList insert(LinkedList list, int data){
+    public static LinkedList insert(LinkedList list, String gmail, String patient, int severity){
         //Makes new node with the new data
-        Node newNode = new Node(data);
+        Node newNode = new Node(gmail, patient, severity);
 
-        //Checks if the linked list is empty or if the new data is larger than the head
-        if (list.head == null || data > list.head.data){
+        //Checks if the linked list is empty or if the new data's severity is larger than the head
+        if (list.head == null || severity > list.head.severity){
             newNode.next = list.head;
             list.head = newNode;
         }
@@ -28,8 +32,8 @@ public class LinkedList {
         else{
             Node current = list.head;
 
-            //keeps going until input data is larger than the next following data
-            while(current.next != null && current.next.data > data){
+            //keeps going until input data's severity is larger than the next following data's severity
+            while(current.next != null && current.next.severity > severity){
                 current = current.next;
             }
 
@@ -52,7 +56,7 @@ public class LinkedList {
         // Traverse through the LinkedList
         while (currNode != null) {
             // Print the data at current node
-            System.out.print(currNode.data + " ");
+            System.out.println(currNode.gmail + " " + currNode.patient + " " + currNode.severity);
 
             // Go to next node
             currNode = currNode.next;

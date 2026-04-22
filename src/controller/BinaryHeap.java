@@ -2,7 +2,7 @@ package controller;
 
 public class BinaryHeap {
     // To store array of elements in the heap
-    private int[] heapArray;
+    private Appointment[] heapArray;
 
     // max size of the heap
     private int capacity;
@@ -14,19 +14,19 @@ public class BinaryHeap {
     // Constructor
     public BinaryHeap(int n) {
         capacity = n;
-        heapArray = new int[capacity];
+        heapArray = new Appointment[capacity];
         currentHeapSize = 0;
     }
 
     //inserting into the heap
-    public void insert(int value) {
+    public void insert(Appointment data) {
         if (currentHeapSize == capacity) {
             return; // Heap is full
         }
 
         // 1. Place at the end
         int index = currentHeapSize;
-        heapArray[index] = value;
+        heapArray[index] = data;
         currentHeapSize++;
 
         // 2. Bubble Up
@@ -38,7 +38,7 @@ public class BinaryHeap {
         int parent = (index - 1) / 2;
 
         //Loops until the root is hit (index 0) or the order is correct
-        while (index > 0 && heapArray[index] > heapArray[parent]) {
+        while (index > 0 && heapArray[index].getSeverity() > heapArray[parent].getSeverity()) {
             //swap the current element with its parent
             swap(index, parent);
 
@@ -50,12 +50,12 @@ public class BinaryHeap {
         }
     }
 
-    public int poll() {
+    public Appointment poll() {
         if (currentHeapSize == 0) {
-            return -1; //Check if heap is empty
+            return null; //Check if heap is empty
         }
 
-        int root = heapArray[0];
+        Appointment root = heapArray[0];
         // Replace root with last element
         heapArray[0] = heapArray[currentHeapSize - 1]; //Puts the lowest value on top
         currentHeapSize--; //reduces the current heap size
@@ -72,12 +72,12 @@ public class BinaryHeap {
         int right = 2 * index + 2;  //Identify the right child
 
         //Check if the left child exist and if it's greater than the parent
-        if (left < currentHeapSize && heapArray[left] > heapArray[largest]) {
+        if (left < currentHeapSize && heapArray[left].getSeverity() > heapArray[largest].getSeverity()) {
             largest = left;
         }
 
         //Check if the right child exists and is greater than the current largest
-        if (right < currentHeapSize && heapArray[right] > heapArray[largest]){
+        if (right < currentHeapSize && heapArray[right].getSeverity() > heapArray[largest].getSeverity()){
             largest = right;
         }
 
@@ -90,9 +90,19 @@ public class BinaryHeap {
 
     //Bubble swap
     private void swap(int i, int j) {
-        int temp = heapArray[i];
+        Appointment temp = heapArray[i];
         heapArray[i] = heapArray[j];
         heapArray[j] = temp;
+    }
+
+
+
+    //Printing the binary heap structure (debugging purposes)
+    public void printHeapArray() {
+        System.out.println("Heap Array:" );
+        for (int i = 0; i < currentHeapSize; i++) {
+            System.out.println("(" + heapArray[i].getSeverity() + ":" + heapArray[i].getPatient() + ") ");
+        }
     }
 
 
