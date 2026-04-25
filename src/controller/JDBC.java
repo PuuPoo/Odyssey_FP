@@ -103,8 +103,11 @@ public class JDBC {
         while(rs.next()){
             String doctorGmail = rs.getString("doctor_GMAIL");
             String patientName = rs.getString("patient_name");
+            byte patientAge = rs.getByte("patient_age");
+            String patientSickness = rs.getString("patient_sickness");
+            String patientContact = rs.getString("patient_contact");
             int severity = rs.getInt("severity");
-            this.Doctor_patientsLL.insert(Doctor_patientsLL, doctorGmail, patientName, severity);
+            this.Doctor_patientsLL.insert(Doctor_patientsLL, doctorGmail, patientName, patientAge, patientSickness, patientContact, severity);
         }
 
         LinkedList.printList(Doctor_patientsLL);
@@ -136,8 +139,11 @@ public class JDBC {
         while(rs.next()){
             String doctorGmail = rs.getString("doctor_GMAIL");
             String patientName = rs.getString("patient_name");
+            byte patientAge = rs.getByte("patient_age");
+            String patientSickness = rs.getString("patient_sickness");
+            String patientContact = rs.getString("patient_contact");
             int severity = rs.getInt("severity");
-            Appointment data = new Appointment(doctorGmail, patientName, severity);
+            Appointment data = new Appointment(doctorGmail, patientName, patientAge, patientSickness, patientContact, severity);
             this.Doctor_patientsBH.insert(data);
         }
 

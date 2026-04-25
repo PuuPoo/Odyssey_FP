@@ -6,9 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 
@@ -26,7 +24,7 @@ public class Controller  {
     private final JDBC DATABASE = new JDBC();
 
 
-
+    //Controller for the login information
     @FXML
     private TextField usernameTextField;
     @FXML
@@ -35,6 +33,27 @@ public class Controller  {
     private Label loginMessage;
     @FXML
     private Label doctorName;
+
+
+
+    //Controller for the patient table in doctor home page
+    @FXML
+    private TableView<Appointment> patientTable;
+    @FXML
+    private TableColumn<Appointment, ?> patientNo;
+    @FXML
+    private TableColumn<Appointment, ?> patientName;
+    @FXML
+    private TableColumn<Appointment, ?> patientAge;
+    @FXML
+    private TableColumn<Appointment, ?> patientSickness;
+    @FXML
+    private TableColumn<Appointment, ?> patientContact;
+    @FXML
+    private TableColumn<Appointment, ?> patientSeverity;
+
+
+
 
 
 

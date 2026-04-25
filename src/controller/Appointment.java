@@ -4,24 +4,42 @@ package controller;
 
 public class Appointment {
     private String gmail;
-    private String patient;
-    private int severity;
+    private String patientName;
+    private byte patientAge;
+    private String patientSickness;
+    private String patientContact;
+    private int patientSeverity;
 
-    public Appointment(String gmail, String patient, int severity){
+    public Appointment(String gmail, String patientName, byte patientAge, String patientSickness, String patientContact, int patientSeverity){
         this.gmail = gmail;
-        this.patient = patient;
-        this.severity = severity;
+        this.patientName = patientName;
+        this.patientAge = patientAge;
+        this.patientSickness = patientSickness;
+        this.patientContact = patientContact;
+        this.patientSeverity = patientSeverity;
     }
 
     public String getGmail(){
         return gmail;
     }
 
-    public String getPatient(){
-        return patient;
+    public String getPatientName(){
+        return patientName;
     }
 
-    public int getSeverity(){
-        return severity;
+    public byte getPatientAge(){
+        return patientAge;
+    }
+
+    public String getPatientSickness(){
+        return patientSickness;
+    }
+
+    public String getPatientContact(){
+        return patientContact;
+    }
+
+    public int getPatientSeverity(){
+        return patientSeverity;
     }
 }

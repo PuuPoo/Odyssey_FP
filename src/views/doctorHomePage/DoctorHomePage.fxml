@@ -77,8 +77,12 @@
                                  <children>
                                     <TableView prefHeight="682.0" prefWidth="1712.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
+                                        <TableColumn id="patientNo" prefWidth="61.0" text="No." />
+                                        <TableColumn id="patientName" prefWidth="331.0" text="Full Name" />
+                                          <TableColumn id="patientAge" prefWidth="121.0" text="Age" />
+                                          <TableColumn id="patientSickness" prefWidth="401.0" text="Sickness" />
+                                          <TableColumn id="patientContact" prefWidth="375.0" text="Contact Information" />
+                                          <TableColumn id="patientSeverity" prefWidth="329.0" text="Severity Index" />
                                       </columns>
                                     </TableView>
                                  </children></AnchorPane>

@@ -38,7 +38,7 @@ public class BinaryHeap {
         int parent = (index - 1) / 2;
 
         //Loops until the root is hit (index 0) or the order is correct
-        while (index > 0 && heapArray[index].getSeverity() > heapArray[parent].getSeverity()) {
+        while (index > 0 && heapArray[index].getPatientSeverity() > heapArray[parent].getPatientSeverity()) {
             //swap the current element with its parent
             swap(index, parent);
 
@@ -72,12 +72,12 @@ public class BinaryHeap {
         int right = 2 * index + 2;  //Identify the right child
 
         //Check if the left child exist and if it's greater than the parent
-        if (left < currentHeapSize && heapArray[left].getSeverity() > heapArray[largest].getSeverity()) {
+        if (left < currentHeapSize && heapArray[left].getPatientSeverity() > heapArray[largest].getPatientSeverity()) {
             largest = left;
         }
 
         //Check if the right child exists and is greater than the current largest
-        if (right < currentHeapSize && heapArray[right].getSeverity() > heapArray[largest].getSeverity()){
+        if (right < currentHeapSize && heapArray[right].getPatientSeverity() > heapArray[largest].getPatientSeverity()){
             largest = right;
         }
 
@@ -101,7 +101,7 @@ public class BinaryHeap {
     public void printHeapArray() {
         System.out.println("Heap Array:" );
         for (int i = 0; i < currentHeapSize; i++) {
-            System.out.println("(" + heapArray[i].getSeverity() + ":" + heapArray[i].getPatient() + ") ");
+            System.out.println(heapArray[i].getPatientSeverity() + ":" + heapArray[i].getPatientName() + ":" + heapArray[i].getPatientAge() + ":" + heapArray[i].getPatientSickness() + ":" + heapArray[i].getPatientContact());
         }
     }
 

@@ -5,21 +5,27 @@ public class LinkedList {
 
     static class Node{
         String gmail;
-        String patient;
+        String patientName;
+        byte patientAge;
+        String patientSickness;
+        String patientContact;
         int severity;
         Node next;
 
-        Node(String gmail, String patient, int severity){ //Constructor
+        Node(String gmail, String patientName, byte patientAge, String patientSickness, String patientContact, int severity){ //Constructor
             this.gmail = gmail;
-            this.patient = patient;
+            this.patientName = patientName;
+            this.patientAge = patientAge;
+            this.patientSickness = patientSickness;
+            this.patientContact = patientContact;
             this.severity = severity;
             next = null;
         }
     }
 
-    public static LinkedList insert(LinkedList list, String gmail, String patient, int severity){
+    public static LinkedList insert(LinkedList list, String gmail, String patientName, byte patientAge, String patientSickness, String patientContact, int severity){
         //Makes new node with the new data
-        Node newNode = new Node(gmail, patient, severity);
+        Node newNode = new Node(gmail, patientName, patientAge, patientSickness, patientContact, severity);
 
         //Checks if the linked list is empty or if the new data's severity is larger than the head
         if (list.head == null || severity > list.head.severity){
@@ -56,7 +62,7 @@ public class LinkedList {
         // Traverse through the LinkedList
         while (currNode != null) {
             // Print the data at current node
-            System.out.println(currNode.gmail + " " + currNode.patient + " " + currNode.severity);
+            System.out.println(currNode.gmail + " " + currNode.patientName + " " + currNode.patientAge + " " + currNode.patientSickness + " " + currNode.patientContact + " " + currNode.severity);
 
             // Go to next node
             currNode = currNode.next;
