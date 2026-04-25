@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,13 +9,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
-
+import java.util.Objects;
+//----------------------------------------------------------------------------------------------------------------
 
 public class Controller  {
 
@@ -40,19 +44,23 @@ public class Controller  {
     @FXML
     private TableView<Appointment> patientTable;
     @FXML
-    private TableColumn<Appointment, ?> patientNo;
+    private TableColumn<Appointment, Integer> patientNo;
     @FXML
-    private TableColumn<Appointment, ?> patientName;
+    private TableColumn<Appointment, String> patientName;
     @FXML
-    private TableColumn<Appointment, ?> patientAge;
+    private TableColumn<Appointment, Byte> patientAge;
     @FXML
-    private TableColumn<Appointment, ?> patientSickness;
+    private TableColumn<Appointment, String> patientSickness;
     @FXML
-    private TableColumn<Appointment, ?> patientContact;
+    private TableColumn<Appointment, String> patientContact;
     @FXML
-    private TableColumn<Appointment, ?> patientSeverity;
+    private TableColumn<Appointment, Integer> patientSeverity;
+
+    private ObservableList<Appointment> observablePatientList = FXCollections.observableArrayList();
 
 
+
+//----------------------------------------------------------------------------------------------------------------
 
 
 
@@ -66,6 +74,10 @@ public class Controller  {
         stage.show();
     }
 
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
     //Switches to the doctor login page scene
     public void switchToDoctorLoginPage(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../views/doctorLoginPage/DoctorLoginPage.fxml"));
@@ -74,6 +86,11 @@ public class Controller  {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
 
     //Switches to the patient symptoms page scene
     public void switchToPatientSymptomsPage(ActionEvent event) throws IOException {
@@ -84,8 +101,12 @@ public class Controller  {
         stage.show();
     }
 
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
     //Switches to the doctor home page scene
-    public void switchToDoctorHomePage(ActionEvent event, String doctorUsername) throws IOException{
+    public void switchToDoctorHomePage(ActionEvent event, String doctorUsername, String gmail) throws IOException, SQLException, ClassNotFoundException {
         //loader to know the controller for the set label
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/doctorHomePage/DoctorHomePage.fxml"));
 
@@ -97,12 +118,17 @@ public class Controller  {
 
         //sets the label
         nextController.doctorName.setText(doctorUsername);
+        nextController.patientTableInitializeLL(gmail); //CHANGE THIS TO CHANGE THE WAY TO LOAD LL OR BH
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
 
 
     public void doctorLoginButtonOnAction(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
@@ -126,7 +152,7 @@ public class Controller  {
             String doctorUsername = getDoctorInformation(username, usernameInformation);
 
             //switching to the doctor home page
-            switchToDoctorHomePage(event, doctorUsername);
+            switchToDoctorHomePage(event, doctorUsername, username);
 
         }
 
@@ -146,5 +172,66 @@ public class Controller  {
     public String getDoctorInformation(String doctorGmail, HashMap<String, String> usernameInformation) {
         return usernameInformation.getOrDefault(doctorGmail, "NULL ERROR");
     }
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+    //Patient Table Information Data Initializer for LinkedList
+    public void patientTableInitializeLL(String gmail) throws SQLException, ClassNotFoundException{
+        //Creates the connection and the LinkedList Data
+        DATABASE.createDoctorPatientConnectionLL();
+
+        //Clears existing value in the UI
+        observablePatientList.clear();
+
+        LinkedList patientInformation = DATABASE.getPatientListLL();
+        LinkedList.Node current = patientInformation.head;
+
+        while(current != null){
+            if (Objects.equals(current.gmail, gmail)) {
+                Appointment appointment = new Appointment(current.gmail, current.patientName, current.patientAge, current.patientSickness, current.patientContact, current.severity);
+
+                observablePatientList.add(appointment);
+            }
+            current = current.next;
+        }
+
+
+
+
+        //Maps the Columns ID in scenebuilder to the Appointment class value
+        patientName.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        patientAge.setCellValueFactory(new PropertyValueFactory<>("patientAge"));
+        patientSickness.setCellValueFactory(new PropertyValueFactory<>("patientSickness"));
+        patientContact.setCellValueFactory(new PropertyValueFactory<>("patientContact"));
+        patientSeverity.setCellValueFactory(new PropertyValueFactory<>("patientSeverity"));
+
+        //Setting the patient number column
+        //Tells the cell factory to utilize a new method to draw on the cell instead of default
+        patientNo.setCellFactory(column -> new TableCell<Appointment, Integer>() {
+            //Overrides the JavaFX method with a new method below
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    // getIndex() gives the current row index (starting at 0)
+                    setText(String.valueOf(getIndex() + 1));
+                }
+            }
+        });
+
+
+        //Adds the data into the table
+        patientTable.setItems(observablePatientList);
+    }
+
+
+    //----------------------------------------------------------------------------------------------------------------
 }
 

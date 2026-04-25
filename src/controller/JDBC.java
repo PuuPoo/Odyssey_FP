@@ -118,6 +118,11 @@ public class JDBC {
         connection.close();
     }
 
+    //The getter for the linked list data
+    public LinkedList getPatientListLL(){
+        return Doctor_patientsLL;
+    }
+
 
 
 
@@ -154,4 +159,10 @@ public class JDBC {
         state.close();
         connection.close();
     }
+
+    //The getter for the binary heap data
+    public BinaryHeap getDoctor_patientsBH() {
+        return Doctor_patientsBH;
+    }
+
 }
