@@ -9,16 +9,16 @@ public class LinkedList {
         byte patientAge;
         String patientSickness;
         String patientContact;
-        int severity;
+        int patientSeverity;
         Node next;
 
-        Node(String gmail, String patientName, byte patientAge, String patientSickness, String patientContact, int severity){ //Constructor
+        Node(String gmail, String patientName, byte patientAge, String patientSickness, String patientContact, int patientSeverity){ //Constructor
             this.gmail = gmail;
             this.patientName = patientName;
             this.patientAge = patientAge;
             this.patientSickness = patientSickness;
             this.patientContact = patientContact;
-            this.severity = severity;
+            this.patientSeverity = patientSeverity;
             next = null;
         }
     }
@@ -27,8 +27,8 @@ public class LinkedList {
         //Makes new node with the new data
         Node newNode = new Node(gmail, patientName, patientAge, patientSickness, patientContact, severity);
 
-        //Checks if the linked list is empty or if the new data's severity is larger than the head
-        if (list.head == null || severity > list.head.severity){
+        //Checks if the linked list is empty or if the new data's patientSeverity is larger than the head
+        if (list.head == null || severity > list.head.patientSeverity){
             newNode.next = list.head;
             list.head = newNode;
         }
@@ -38,8 +38,8 @@ public class LinkedList {
         else{
             Node current = list.head;
 
-            //keeps going until input data's severity is larger than the next following data's severity
-            while(current.next != null && current.next.severity > severity){
+            //keeps going until input data's patientSeverity is larger than the next following data's patientSeverity
+            while(current.next != null && current.next.patientSeverity > severity){
                 current = current.next;
             }
 
@@ -62,7 +62,7 @@ public class LinkedList {
         // Traverse through the LinkedList
         while (currNode != null) {
             // Print the data at current node
-            System.out.println(currNode.gmail + " " + currNode.patientName + " " + currNode.patientAge + " " + currNode.patientSickness + " " + currNode.patientContact + " " + currNode.severity);
+            System.out.println(currNode.gmail + " " + currNode.patientName + " " + currNode.patientAge + " " + currNode.patientSickness + " " + currNode.patientContact + " " + currNode.patientSeverity);
 
             // Go to next node
             currNode = currNode.next;

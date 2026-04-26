@@ -118,7 +118,8 @@ public class Controller  {
 
         //sets the label
         nextController.doctorName.setText(doctorUsername);
-        nextController.patientTableInitializeLL(gmail); //CHANGE THIS TO CHANGE THE WAY TO LOAD LL OR BH
+        //nextController.patientTableInitializeLL(gmail); //CHANGE THIS TO CHANGE THE WAY TO LOAD LL OR BH
+        nextController.patientTableInitializeBH(gmail);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -193,7 +194,7 @@ public class Controller  {
 
         while(current != null){
             if (Objects.equals(current.gmail, gmail)) {
-                Appointment appointment = new Appointment(current.gmail, current.patientName, current.patientAge, current.patientSickness, current.patientContact, current.severity);
+                Appointment appointment = new Appointment(current.gmail, current.patientName, current.patientAge, current.patientSickness, current.patientContact, current.patientSeverity);
 
                 observablePatientList.add(appointment);
             }
@@ -233,5 +234,53 @@ public class Controller  {
 
 
     //----------------------------------------------------------------------------------------------------------------
+
+    //Patient Table Information Data Initializer for Binary Heap
+    public void patientTableInitializeBH(String gmail) throws SQLException, ClassNotFoundException{
+        //Creates the connection and the LinkedList Data
+        DATABASE.createDoctorPatientConnectionBH();
+
+        //Clears existing value in the UI
+        observablePatientList.clear();
+
+        BinaryHeap patientInformation = DATABASE.getPatientListBH();
+
+        Appointment data = patientInformation.poll();
+
+        while(data != null){
+            if (data.getGmail().equals(gmail)) {
+                observablePatientList.add(data);
+            }
+            data = patientInformation.poll();
+        }
+
+
+        //Maps the Columns ID in scenebuilder to the Appointment class value
+        patientName.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        patientAge.setCellValueFactory(new PropertyValueFactory<>("patientAge"));
+        patientSickness.setCellValueFactory(new PropertyValueFactory<>("patientSickness"));
+        patientContact.setCellValueFactory(new PropertyValueFactory<>("patientContact"));
+        patientSeverity.setCellValueFactory(new PropertyValueFactory<>("patientSeverity"));
+
+        //Setting the patient number column
+        //Tells the cell factory to utilize a new method to draw on the cell instead of default
+        patientNo.setCellFactory(column -> new TableCell<Appointment, Integer>() {
+            //Overrides the JavaFX method with a new method below
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    // getIndex() gives the current row index (starting at 0)
+                    setText(String.valueOf(getIndex() + 1));
+                }
+            }
+        });
+
+
+        //Adds the data into the table
+        patientTable.setItems(observablePatientList);
+    }
 }
 

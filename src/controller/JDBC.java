@@ -106,8 +106,8 @@ public class JDBC {
             byte patientAge = rs.getByte("patient_age");
             String patientSickness = rs.getString("patient_sickness");
             String patientContact = rs.getString("patient_contact");
-            int severity = rs.getInt("severity");
-            this.Doctor_patientsLL.insert(Doctor_patientsLL, doctorGmail, patientName, patientAge, patientSickness, patientContact, severity);
+            int patientSeverity = rs.getInt("patient_severity");
+            this.Doctor_patientsLL.insert(Doctor_patientsLL, doctorGmail, patientName, patientAge, patientSickness, patientContact, patientSeverity);
         }
 
         LinkedList.printList(Doctor_patientsLL);
@@ -147,8 +147,8 @@ public class JDBC {
             byte patientAge = rs.getByte("patient_age");
             String patientSickness = rs.getString("patient_sickness");
             String patientContact = rs.getString("patient_contact");
-            int severity = rs.getInt("severity");
-            Appointment data = new Appointment(doctorGmail, patientName, patientAge, patientSickness, patientContact, severity);
+            int patientSeverity = rs.getInt("patient_severity");
+            Appointment data = new Appointment(doctorGmail, patientName, patientAge, patientSickness, patientContact, patientSeverity);
             this.Doctor_patientsBH.insert(data);
         }
 
@@ -161,7 +161,7 @@ public class JDBC {
     }
 
     //The getter for the binary heap data
-    public BinaryHeap getDoctor_patientsBH() {
+    public BinaryHeap getPatientListBH() {
         return Doctor_patientsBH;
     }
 

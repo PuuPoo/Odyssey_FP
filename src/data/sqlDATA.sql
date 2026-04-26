@@ -39,17 +39,18 @@ CREATE TABLE doctor_information_patients(
     patient_age TINYINT,
     patient_sickness VARCHAR(50),
     patient_contact VARCHAR(50),
-    severity INT,
+    patient_severity INT,
     PRIMARY KEY (doctor_GMAIL, patient_name),
 	FOREIGN KEY (doctor_GMAIL) REFERENCES doctor_login_information(doctor_GMAIL)
 );
 
 -- Doctor Information Patients
-INSERT INTO doctor_information_patients(doctor_GMAIL, patient_name, patient_age, patient_sickness, patient_contact, severity)
+INSERT INTO doctor_information_patients(doctor_GMAIL, patient_name, patient_age, patient_sickness, patient_contact, patient_severity)
 VALUES
 ('doctor1@gmail.com', 'Cassian Thorne', 27, 'Head Truma', '1989-5981-3136', 3),
 ('doctor1@gmail.com', 'Elara Vance', 78, 'Leg Fracture', '2341-5231-3811', 2),
 ('doctor1@gmail.com', 'Julian Sterling', 67, 'Bruised Knee', '0856-1321-6413',  1),
 ('doctor1@gmail.com', 'Mira Holloway', 23, 'Heart Attack', '9575-1657-5723', 9),
-('doctor1@gmail.com', 'Timothy Cath', 31, 'Internal Bleeding', '4821-5824-1837', 9);
+('doctor1@gmail.com', 'Timothy Cath', 31, 'Internal Bleeding', '4821-5824-1837', 9),
+('doctor2@gmail.com', 'Robinson Stewart', 58, 'Dislocated Knee', '9533-5728-5729', 4);
 
