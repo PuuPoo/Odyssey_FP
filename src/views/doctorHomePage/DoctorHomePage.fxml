@@ -75,14 +75,14 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="1724.0">
                                  <children>
-                                    <TableView fx:id="patientTable" prefHeight="682.0" prefWidth="1712.0">
+                                    <TableView fx:id="patientTable" prefHeight="682.0" prefWidth="1712.0" stylesheets="@doctorHomePage.css">
                                       <columns>
-                                        <TableColumn fx:id="patientNo" prefWidth="61.0" text="No." />
-                                        <TableColumn fx:id="patientName" prefWidth="331.0" text="Full Name" />
-                                          <TableColumn fx:id="patientAge" prefWidth="121.0" text="Age" />
-                                          <TableColumn fx:id="patientSickness" prefWidth="401.0" text="Sickness" />
-                                          <TableColumn fx:id="patientContact" prefWidth="375.0" text="Contact Information" />
-                                          <TableColumn fx:id="patientSeverity" prefWidth="329.0" text="Severity Index" />
+                                        <TableColumn fx:id="patientNo" editable="false" prefWidth="61.0" resizable="false" sortable="false" reorderable="false" text="No." />
+                                        <TableColumn fx:id="patientName" editable="false" prefWidth="331.0" resizable="false" sortable="false" reorderable="false" text="Full Name" />
+                                          <TableColumn fx:id="patientAge" editable="false" prefWidth="121.0" resizable="false" sortable="false" reorderable="false" text="Age" />
+                                          <TableColumn fx:id="patientSickness" editable="false" prefWidth="401.0" resizable="false" sortable="false" reorderable="false" text="Sickness" />
+                                          <TableColumn fx:id="patientContact" editable="false" prefWidth="375.0" resizable="false" sortable="false" reorderable="false" text="Contact Information" />
+                                          <TableColumn fx:id="patientSeverity" editable="false" prefWidth="329.0" resizable="false" sortable="false" reorderable="false" text="Severity Index" />
                                       </columns>
                                     </TableView>
                                  </children></AnchorPane>

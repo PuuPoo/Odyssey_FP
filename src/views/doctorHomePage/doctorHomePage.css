@@ -1,3 +1,4 @@
+
 .background{
     -fx-background-color: rgb(94,0,6);
 
@@ -15,3 +16,53 @@
 .hover_Button:hover{
     -fx-background-color: #362b2b;
 }
+
+.table-view {
+     -fx-background-color: transparent;
+     -fx-font-size: 14px;
+ }
+
+ .table-view .column-header-background {
+     -fx-background-color: rgb(94,0,6);
+ }
+
+ .table-view .column-header {
+     /* The individual header buttons */
+     -fx-background-color: transparent;
+     -fx-size: 40px;
+     -fx-border-color: #353b48;
+ }
+
+ .table-view .column-header .label {
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+     -fx-alignment: CENTER_LEFT;
+ }
+
+ .table-row-cell {
+     -fx-background-color: white;
+     -fx-border-color: #f5f6fa;
+ }
+
+ .table-row-cell:odd {
+     -fx-background-color: #f1f2f6;
+ }
+
+
+ .table-row-cell:hover {
+     -fx-background-color: #dfe4ea;
+ }
+
+
+ .table-row-cell:selected {
+     -fx-background-color: #3498db;
+ }
+
+ .table-row-cell:selected .text {
+     -fx-fill: white;
+ }
+
+ .table-cell {
+     -fx-padding: 10px;
+     -fx-alignment: CENTER_LEFT;
+ }
