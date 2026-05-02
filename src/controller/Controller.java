@@ -224,6 +224,7 @@ public class Controller  {
             @Override
             protected void updateItem(Integer item, boolean empty) {
                 super.updateItem(item, empty);
+                //checks is the cell is empty
                 if (empty) {
                     setText(null);
                 }
@@ -234,21 +235,25 @@ public class Controller  {
             }
         });
 
+        //Patient Action column
         patientAction.setCellFactory(column -> new TableCell<Appointment, Void>() {
                     //Overrides the JavaFX method with a new method below
                     @Override
                     protected void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
+                        //Checks if the cell is empty
                         if(empty){
                             setGraphic(null);
                         }
                         else{
+                            //Creates a button for removal
                             Button remove = new Button("Remove");
-                            remove.getStyleClass().add("remove-button");
+                            remove.getStyleClass().add("remove-button"); //style class for the button
                             setGraphic(remove);
+                            //when the button is pressed
                             remove.setOnAction(event ->{
-                                Appointment dataRemove = getTableRow().getItem();
-                                if(dataRemove != null){
+                                Appointment dataRemove = getTableRow().getItem(); //Gets the data
+                                if(dataRemove != null){ //if it's not null it removes the data from the display list
                                     observablePatientList.remove(dataRemove);
                                 }
                             });
@@ -258,8 +263,7 @@ public class Controller  {
                 });
 
 
-
-                //Adds the data into the table
+        //Adds the data into the table
         patientTable.setItems(observablePatientList);
     }
 
@@ -310,20 +314,26 @@ public class Controller  {
         });
 
 
+
+        //Patient Action column
         patientAction.setCellFactory(column -> new TableCell<Appointment, Void>() {
             //Overrides the JavaFX method with a new method below
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
+                //Checks if the cell is empty
                 if(empty){
                     setGraphic(null);
                 }
                 else{
+                    //Creates a button for removal
                     Button remove = new Button("Remove");
+                    remove.getStyleClass().add("remove-button"); //style class for the button
                     setGraphic(remove);
+                    //when the button is pressed
                     remove.setOnAction(event ->{
-                        Appointment dataRemove = getTableRow().getItem();
-                        if(dataRemove != null){
+                        Appointment dataRemove = getTableRow().getItem(); //Gets the data
+                        if(dataRemove != null){ //if it's not null it removes the data from the display list
                             observablePatientList.remove(dataRemove);
                         }
                     });
