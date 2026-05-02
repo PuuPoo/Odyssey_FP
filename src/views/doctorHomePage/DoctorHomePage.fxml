@@ -82,7 +82,8 @@
                                           <TableColumn fx:id="patientAge" editable="false" prefWidth="121.0" resizable="false" sortable="false" text="Age" />
                                           <TableColumn fx:id="patientSickness" editable="false" prefWidth="401.0" resizable="false" sortable="false" text="Sickness" />
                                           <TableColumn fx:id="patientContact" editable="false" prefWidth="375.0" resizable="false" sortable="false" text="Contact Information" />
-                                          <TableColumn fx:id="patientSeverity" editable="false" prefWidth="329.0" resizable="false" sortable="false" text="Severity Index" />
+                                          <TableColumn fx:id="patientSeverity" editable="false" prefWidth="313.0" resizable="false" sortable="false" text="Severity Index" />
+                                          <TableColumn fx:id="patientAction" prefWidth="109.0" text="Action" />
                                       </columns>
                                     </TableView>
                                  </children></AnchorPane>

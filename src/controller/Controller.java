@@ -55,6 +55,8 @@ public class Controller  {
     private TableColumn<Appointment, String> patientContact;
     @FXML
     private TableColumn<Appointment, Integer> patientSeverity;
+    @FXML
+    private TableColumn<Appointment, Void> patientAction;
 
     private ObservableList<Appointment> observablePatientList = FXCollections.observableArrayList();
 
@@ -118,8 +120,12 @@ public class Controller  {
 
         //sets the label
         nextController.doctorName.setText(doctorUsername);
-        //nextController.patientTableInitializeLL(gmail); //CHANGE THIS TO CHANGE THE WAY TO LOAD LL OR BH
-        nextController.patientTableInitializeBH(gmail);
+
+        //Checks if the controller is fully loaded
+        if (nextController.patientAction != null) {
+            nextController.patientTableInitializeLL(gmail); //Depending on which data structure to load into patients table
+            //nextController.patientTableInitializeBH(gmail);
+        }
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -220,15 +226,40 @@ public class Controller  {
                 super.updateItem(item, empty);
                 if (empty) {
                     setText(null);
-                } else {
+                }
+                else {
                     // getIndex() gives the current row index (starting at 0)
                     setText(String.valueOf(getIndex() + 1));
                 }
             }
         });
 
+        patientAction.setCellFactory(column -> new TableCell<Appointment, Void>() {
+                    //Overrides the JavaFX method with a new method below
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if(empty){
+                            setGraphic(null);
+                        }
+                        else{
+                            Button remove = new Button("Remove");
+                            remove.getStyleClass().add("remove-button");
+                            setGraphic(remove);
+                            remove.setOnAction(event ->{
+                                Appointment dataRemove = getTableRow().getItem();
+                                if(dataRemove != null){
+                                    observablePatientList.remove(dataRemove);
+                                }
+                            });
 
-        //Adds the data into the table
+                        }
+                    }
+                });
+
+
+
+                //Adds the data into the table
         patientTable.setItems(observablePatientList);
     }
 
@@ -274,6 +305,29 @@ public class Controller  {
                 } else {
                     // getIndex() gives the current row index (starting at 0)
                     setText(String.valueOf(getIndex() + 1));
+                }
+            }
+        });
+
+
+        patientAction.setCellFactory(column -> new TableCell<Appointment, Void>() {
+            //Overrides the JavaFX method with a new method below
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if(empty){
+                    setGraphic(null);
+                }
+                else{
+                    Button remove = new Button("Remove");
+                    setGraphic(remove);
+                    remove.setOnAction(event ->{
+                        Appointment dataRemove = getTableRow().getItem();
+                        if(dataRemove != null){
+                            observablePatientList.remove(dataRemove);
+                        }
+                    });
+
                 }
             }
         });

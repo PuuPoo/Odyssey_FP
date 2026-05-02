@@ -66,3 +66,21 @@
      -fx-padding: 10px;
      -fx-alignment: CENTER_LEFT;
  }
+
+ .remove-button {
+    -fx-background-color: #ff4d4d;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px 15px;
+    -fx-cursor: hand;
+ }
+
+ .remove-button:hover {
+    -fx-background-color: #ff6666;
+ }
+
+
+ .remove-button:pressed {
+    -fx-background-color: #cc0000;
+ }
