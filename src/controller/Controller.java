@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -59,6 +60,7 @@ public class Controller  {
     private TableColumn<Appointment, Void> patientAction;
 
     private ObservableList<Appointment> observablePatientList = FXCollections.observableArrayList();
+
 
 
 
@@ -345,6 +347,21 @@ public class Controller  {
 
         //Adds the data into the table
         patientTable.setItems(observablePatientList);
+    }
+
+
+
+
+    //----------------------------------------------------------------------------------------------------------------
+    @FXML
+    void handleSymptomClick(ActionEvent event){
+        //Reads the clicked text from the menu Item
+        MenuItem clickedItem = (MenuItem) event.getSource();
+
+        //from the data read it to a string
+        String symptom = clickedItem.getText();
+
+        //update later
     }
 }
 

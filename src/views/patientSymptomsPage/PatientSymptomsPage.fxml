@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,7 +26,7 @@
                               <Font name="Alexandria Bold" size="60.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="60.0" />
+                              <Insets top="30.0" />
                            </VBox.margin>
                         </Text>
                         <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name :">
@@ -108,10 +109,10 @@
                               <Font name="Alexandria Bold" size="60.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="60.0" />
+                              <Insets top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Symptom 1 :">
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="General Symptom :">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
@@ -119,12 +120,23 @@
                               <Insets left="35.0" />
                            </VBox.margin>
                         </Text>
-                        <ComboBox prefHeight="51.0" prefWidth="817.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a General Symptom">
+                          <items>
+                              <MenuItem mnemonicParsing="false" text="None" />
+                            <MenuItem mnemonicParsing="false" text="Fever" />
+                            <MenuItem mnemonicParsing="false" text="Chills" />
+                              <MenuItem mnemonicParsing="false" text="Fatigue / Weakness" />
+                              <MenuItem mnemonicParsing="false" text="Unexplainable Weight Loss" />
+                              <MenuItem mnemonicParsing="false" text="Night Sweats" />
+                          </items>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
-                        </ComboBox>
-                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Symptom 2 :">
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                        </MenuButton>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Head &amp; Neck Symptom :">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
@@ -132,12 +144,23 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <ComboBox prefHeight="51.0" prefWidth="817.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
+                        <MenuButton layoutX="40.0" layoutY="183.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Head &amp; Neck Symptom">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="None" />
+                              <MenuItem mnemonicParsing="false" text="Headache" />
+                              <MenuItem mnemonicParsing="false" text="Dizziness / Vertigo" />
+                              <MenuItem mnemonicParsing="false" text="Ringging in Ears (Tinnitus)" />
+                              <MenuItem mnemonicParsing="false" text="Sore Throat" />
+                              <MenuItem mnemonicParsing="false" text="Swollen Glands" />
+                           </items>
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
-                        </ComboBox>
-                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Symptom 3 :">
+                        </MenuButton>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Respitory Symptom :">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
@@ -145,12 +168,23 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <ComboBox prefHeight="51.0" prefWidth="817.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Respitory Symptom">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="None" />
+                              <MenuItem mnemonicParsing="false" text="Dry Cough" />
+                              <MenuItem mnemonicParsing="false" text="Productive Cough (Phlegm)" />
+                              <MenuItem mnemonicParsing="false" text="Shortness of Breath" />
+                              <MenuItem mnemonicParsing="false" text="Wheezing" />
+                              <MenuItem mnemonicParsing="false" text="Chest Tightness" />
+                           </items>
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
-                        </ComboBox>
-                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Symptom 4 :">
+                        </MenuButton>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Cardiovascular Symptom :">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
@@ -158,11 +192,118 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <ComboBox prefHeight="51.0" prefWidth="817.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Cardiovascular Symptom">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="None" />
+                              <MenuItem mnemonicParsing="false" text="Chest Pain" />
+                              <MenuItem mnemonicParsing="false" text="Heart Palpatations (Racing Heart)" />
+                              <MenuItem mnemonicParsing="false" text="Irregular Heartbeats" />
+                              <MenuItem mnemonicParsing="false" text="Fainting Spells" />
+                              <MenuItem mnemonicParsing="false" text="Swelling in Legs or Feet" />
+                           </items>
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
-                        </ComboBox>
+                        </MenuButton>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Gastrointestinal Symptom :">
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="30.0" />
+                           </VBox.margin>
+                        </Text>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Gastrointestinal Symptom">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="None" />
+                              <MenuItem mnemonicParsing="false" text="Nausea / Vomiting" />
+                              <MenuItem mnemonicParsing="false" text="Abdominal Pain / Cramping" />
+                              <MenuItem mnemonicParsing="false" text="Bloating" />
+                              <MenuItem mnemonicParsing="false" text="Heartburn / Acid Reflux" />
+                              <MenuItem mnemonicParsing="false" text="Loss of Appetite" />
+                           </items>
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="30.0" right="60.0" top="10.0" />
+                           </VBox.margin>
+                        </MenuButton>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Musculoskeletal Symptom :">
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="30.0" />
+                           </VBox.margin>
+                        </Text>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Musculoskeletal Symptom">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="None" />
+                              <MenuItem mnemonicParsing="false" text="Joint Pain" />
+                              <MenuItem mnemonicParsing="false" text="Muscle Aches (Myalgia)" />
+                              <MenuItem mnemonicParsing="false" text="Back Pain" />
+                              <MenuItem mnemonicParsing="false" text="Stiffness" />
+                              <MenuItem mnemonicParsing="false" text="Limited Range of Motion" />
+                           </items>
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="30.0" right="60.0" top="10.0" />
+                           </VBox.margin>
+                        </MenuButton>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Neurological Symptom :">
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="30.0" />
+                           </VBox.margin>
+                        </Text>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Neurological Symptom">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="None" />
+                              <MenuItem mnemonicParsing="false" text="Numbeness or Tingling (Pins &amp; Needles)" />
+                              <MenuItem mnemonicParsing="false" text="Confusion / Memory Issues" />
+                              <MenuItem mnemonicParsing="false" text="Skin Rash" />
+                              <MenuItem mnemonicParsing="false" text="Itching (Pruritus)" />
+                              <MenuItem mnemonicParsing="false" text="Vision Changes (Blurrisness)" />
+                           </items>
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="30.0" right="60.0" top="10.0" />
+                           </VBox.margin>
+                        </MenuButton>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Dermatological Symptom :">
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="30.0" />
+                           </VBox.margin>
+                        </Text>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Dermatological Symptom">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="None" />
+                              <MenuItem mnemonicParsing="false" text="Dry / Flaky Skin " />
+                              <MenuItem mnemonicParsing="false" text="Redness (Erythema)" />
+                              <MenuItem mnemonicParsing="false" text="Hair Loss" />
+                              <MenuItem mnemonicParsing="false" text="Hives (Urticaria)" />
+                              <MenuItem mnemonicParsing="false" text="Blisters" />
+                           </items>
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="30.0" right="60.0" top="10.0" />
+                           </VBox.margin>
+                        </MenuButton>
                      </children>
                      <HBox.margin>
                         <Insets />
