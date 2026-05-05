@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -93,6 +95,22 @@
                               <Font name="Alexandria Regular" size="25.0" />
                            </font>
                         </TextField>
+                        <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Symptoms Selected :">
+                           <font>
+                              <Font name="Alexandria Bold" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="100.0" />
+                           </VBox.margin>
+                        </Text>
+                        <TextArea fx:id="symptomDisplayField" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Please select symptoms to showcase them here">
+                           <VBox.margin>
+                              <Insets left="30.0" right="60.0" top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Alexandria Bold" size="20.0" />
+                           </font>
+                        </TextArea>
                      </children>
                   </VBox>
                </children>
@@ -120,21 +138,25 @@
                               <Insets left="35.0" />
                            </VBox.margin>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a General Symptom">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="None" />
-                            <MenuItem mnemonicParsing="false" text="Fever" />
-                            <MenuItem mnemonicParsing="false" text="Chills" />
-                              <MenuItem mnemonicParsing="false" text="Fatigue / Weakness" />
-                              <MenuItem mnemonicParsing="false" text="Unexplainable Weight Loss" />
-                              <MenuItem mnemonicParsing="false" text="Night Sweats" />
-                          </items>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
+                           <items>
+                              <Menu mnemonicParsing="false" text="General Symptom">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Fever" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Chills" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Fatigue/Weakness" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Unexplained Weight Loss" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Night Sweats" />
+                                 </items>
+                              </Menu>
+                           </items>
                         </MenuButton>
                         <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Head &amp; Neck Symptom :">
                            <font>
@@ -144,21 +166,25 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <MenuButton layoutX="40.0" layoutY="183.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Head &amp; Neck Symptom">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="None" />
-                              <MenuItem mnemonicParsing="false" text="Headache" />
-                              <MenuItem mnemonicParsing="false" text="Dizziness / Vertigo" />
-                              <MenuItem mnemonicParsing="false" text="Ringging in Ears (Tinnitus)" />
-                              <MenuItem mnemonicParsing="false" text="Sore Throat" />
-                              <MenuItem mnemonicParsing="false" text="Swollen Glands" />
-                           </items>
+                        <MenuButton layoutX="40.0" layoutY="183.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
+                           <items>
+                              <Menu mnemonicParsing="false" text="Head &amp; Neck Symptom">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Headache" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Dizziness / Vertigo" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Ringing in Ears (Tinnitus)" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Sore Throat" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Swollen Glands" />
+                                 </items>
+                              </Menu>
+                           </items>
                         </MenuButton>
                         <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Respitory Symptom :">
                            <font>
@@ -168,21 +194,25 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Respitory Symptom">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="None" />
-                              <MenuItem mnemonicParsing="false" text="Dry Cough" />
-                              <MenuItem mnemonicParsing="false" text="Productive Cough (Phlegm)" />
-                              <MenuItem mnemonicParsing="false" text="Shortness of Breath" />
-                              <MenuItem mnemonicParsing="false" text="Wheezing" />
-                              <MenuItem mnemonicParsing="false" text="Chest Tightness" />
-                           </items>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
+                           <items>
+                              <Menu mnemonicParsing="false" text="Respitory Symptom">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Dry Cough" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Productive Cough (Phleghm)" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Shortness of Breath" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Wheezing" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Chest Tightness" />
+                                 </items>
+                              </Menu>
+                           </items>
                         </MenuButton>
                         <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Cardiovascular Symptom :">
                            <font>
@@ -192,21 +222,25 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Cardiovascular Symptom">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="None" />
-                              <MenuItem mnemonicParsing="false" text="Chest Pain" />
-                              <MenuItem mnemonicParsing="false" text="Heart Palpatations (Racing Heart)" />
-                              <MenuItem mnemonicParsing="false" text="Irregular Heartbeats" />
-                              <MenuItem mnemonicParsing="false" text="Fainting Spells" />
-                              <MenuItem mnemonicParsing="false" text="Swelling in Legs or Feet" />
-                           </items>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
+                           <items>
+                              <Menu mnemonicParsing="false" text="Cardiovascular Symptom">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Chest Pain" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Heart Palpatations (Racing Heart)" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Irregular Heartbeat" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Fainting Spells" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Swelling in Legs or Feet" />
+                                 </items>
+                              </Menu>
+                           </items>
                         </MenuButton>
                         <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Gastrointestinal Symptom :">
                            <font>
@@ -216,21 +250,25 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Gastrointestinal Symptom">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="None" />
-                              <MenuItem mnemonicParsing="false" text="Nausea / Vomiting" />
-                              <MenuItem mnemonicParsing="false" text="Abdominal Pain / Cramping" />
-                              <MenuItem mnemonicParsing="false" text="Bloating" />
-                              <MenuItem mnemonicParsing="false" text="Heartburn / Acid Reflux" />
-                              <MenuItem mnemonicParsing="false" text="Loss of Appetite" />
-                           </items>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
+                           <items>
+                              <Menu mnemonicParsing="false" text="Gastrointestinal Symptom">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Nausea / Vomiting" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Abdominal Pain / Cramping" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Bloating" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Heartburn / Acid Reflux" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Loss of Appetite" />
+                                 </items>
+                              </Menu>
+                           </items>
                         </MenuButton>
                         <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Musculoskeletal Symptom :">
                            <font>
@@ -240,21 +278,25 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Musculoskeletal Symptom">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="None" />
-                              <MenuItem mnemonicParsing="false" text="Joint Pain" />
-                              <MenuItem mnemonicParsing="false" text="Muscle Aches (Myalgia)" />
-                              <MenuItem mnemonicParsing="false" text="Back Pain" />
-                              <MenuItem mnemonicParsing="false" text="Stiffness" />
-                              <MenuItem mnemonicParsing="false" text="Limited Range of Motion" />
-                           </items>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
+                           <items>
+                              <Menu mnemonicParsing="false" text="Musculoskeletal Symptom">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Joint Pain" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Muscle Aches (Myalgia)" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Back Pain" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Stiffness" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Limited Range of Motion" />
+                                 </items>
+                              </Menu>
+                           </items>
                         </MenuButton>
                         <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Neurological Symptom :">
                            <font>
@@ -264,21 +306,25 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Neurological Symptom">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="None" />
-                              <MenuItem mnemonicParsing="false" text="Numbeness or Tingling (Pins &amp; Needles)" />
-                              <MenuItem mnemonicParsing="false" text="Confusion / Memory Issues" />
-                              <MenuItem mnemonicParsing="false" text="Skin Rash" />
-                              <MenuItem mnemonicParsing="false" text="Itching (Pruritus)" />
-                              <MenuItem mnemonicParsing="false" text="Vision Changes (Blurrisness)" />
-                           </items>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
+                           <items>
+                              <Menu mnemonicParsing="false" text="Neurological Symptom">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Numbness or Tingling (Pins &amp; Needles)" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Confusion / Memory Issues" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Skin Rash" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Itching (Pruritus)" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Vision Changess (Bluriness)" />
+                                 </items>
+                              </Menu>
+                           </items>
                         </MenuButton>
                         <Text fill="#5e0006" strokeType="OUTSIDE" strokeWidth="0.0" text="Dermatological Symptom :">
                            <font>
@@ -288,21 +334,25 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;" text="Select a Dermatological Symptom">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="None" />
-                              <MenuItem mnemonicParsing="false" text="Dry / Flaky Skin " />
-                              <MenuItem mnemonicParsing="false" text="Redness (Erythema)" />
-                              <MenuItem mnemonicParsing="false" text="Hair Loss" />
-                              <MenuItem mnemonicParsing="false" text="Hives (Urticaria)" />
-                              <MenuItem mnemonicParsing="false" text="Blisters" />
-                           </items>
+                        <MenuButton mnemonicParsing="false" prefHeight="46.0" prefWidth="847.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
                            <font>
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
+                           <items>
+                              <Menu mnemonicParsing="false" text="Dermatological Symptom">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Dry / Flaky Skin " />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Redness (Erythema)" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Hives" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Blisters" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Hair Loss" />
+                                 </items>
+                              </Menu>
+                           </items>
                         </MenuButton>
                      </children>
                      <HBox.margin>

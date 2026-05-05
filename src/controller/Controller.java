@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 //----------------------------------------------------------------------------------------------------------------
@@ -27,6 +28,7 @@ public class Controller  {
     private Parent root;
 
     private final JDBC DATABASE = new JDBC();
+    private ArrayList<String> patientSelectedSymptoms = new ArrayList<>();
 
 
     //Controller for the login information
@@ -63,7 +65,8 @@ public class Controller  {
 
 
 
-
+    @FXML
+    private TextArea symptomDisplayField;
 //----------------------------------------------------------------------------------------------------------------
 
 
@@ -356,12 +359,49 @@ public class Controller  {
     @FXML
     void handleSymptomClick(ActionEvent event){
         //Reads the clicked text from the menu Item
-        MenuItem clickedItem = (MenuItem) event.getSource();
+        CheckMenuItem clickedItem = (CheckMenuItem) event.getSource();
 
         //from the data read it to a string
-        String symptom = clickedItem.getText();
+        String symptomName = clickedItem.getText();
 
-        //update later
+        //checks if any item is checked in the menu box
+        if(clickedItem.isSelected()){
+            patientSelectedSymptoms.add(symptomName);
+        }
+        else{
+            patientSelectedSymptoms.remove(symptomName);
+        }
+
+        //Gets all the data from the array list and makes it into a string to be displayed
+        String joinedSymptoms = String.join(", ", patientSelectedSymptoms);
+        symptomDisplayField.setText(joinedSymptoms);
+        updateButtonLabel(clickedItem);
+    }
+
+
+    private void updateButtonLabel(CheckMenuItem clickedItem) {
+        //Find the menuButton parent in the hierarchy
+        Menu parentMenu = clickedItem.getParentMenu();
+
+        // Finds the MenuButton that owns the menu you the user clicked
+        MenuButton mainBox = (MenuButton) parentMenu.getParentPopup().getOwnerNode();
+
+        // Counts how many items are checked in the category
+        int count = 0;
+        for (MenuItem m : parentMenu.getItems()) {
+            if (m instanceof CheckMenuItem && ((CheckMenuItem) m).isSelected()) {
+                count++;
+            }
+        }
+
+        // Sets the label
+        if (count > 0) {
+            mainBox.setText(parentMenu.getText() + " (" + count + ")");
+        }
+        else {
+            // Resets it back to your original prompt if they uncheck everything
+            mainBox.setText("Select a " + parentMenu.getText());
+        }
     }
 }
 
