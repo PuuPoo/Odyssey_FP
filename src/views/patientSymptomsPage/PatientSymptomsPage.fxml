@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TextArea?>
@@ -39,7 +41,7 @@
                               <Insets left="35.0" />
                            </VBox.margin>
                         </Text>
-                        <TextField prefHeight="51.0" prefWidth="824.0" promptText="Example: John Pork" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                        <TextField fx:id="patientNameField" prefHeight="51.0" prefWidth="824.0" promptText="Example: John Pork" style="-fx-background-radius: 50; -fx-border-radius: 50;">
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
@@ -55,7 +57,7 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <TextField prefHeight="51.0" prefWidth="824.0" promptText="Example: 30" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                        <TextField fx:id="patientAgeField" prefHeight="51.0" prefWidth="824.0" promptText="Example: 30" style="-fx-background-radius: 50; -fx-border-radius: 50;">
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
@@ -71,7 +73,7 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <TextField prefHeight="51.0" prefWidth="824.0" promptText="Example: 2953-5903-5983" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                        <TextField fx:id="patientContactField" prefHeight="51.0" prefWidth="824.0" promptText="Example: 2953-5903-5983" style="-fx-background-radius: 50; -fx-border-radius: 50;">
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
@@ -87,7 +89,7 @@
                               <Insets left="35.0" top="30.0" />
                            </VBox.margin>
                         </Text>
-                        <TextField prefHeight="51.0" prefWidth="824.0" promptText="Example: Broken bone" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                        <TextField fx:id="patientSicknessField" prefHeight="51.0" prefWidth="824.0" promptText="Example: Broken bone" style="-fx-background-radius: 50; -fx-border-radius: 50;">
                            <VBox.margin>
                               <Insets left="30.0" right="60.0" top="10.0" />
                            </VBox.margin>
@@ -100,7 +102,7 @@
                               <Font name="Alexandria Bold" size="23.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="35.0" top="100.0" />
+                              <Insets left="35.0" top="70.0" />
                            </VBox.margin>
                         </Text>
                         <TextArea fx:id="symptomDisplayField" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Please select symptoms to showcase them here">
@@ -111,6 +113,22 @@
                               <Font name="Alexandria Bold" size="20.0" />
                            </font>
                         </TextArea>
+                        <Label fx:id="submitErrorLabel" textAlignment="CENTER" textFill="RED">
+                           <font>
+                              <Font name="Alexandria Bold" size="19.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="300.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button fx:id="submitButton" mnemonicParsing="false" onAction="#switchToAcceptPage" prefHeight="68.0" prefWidth="342.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="hover_Button" stylesheets="@../homeLogin/homeLoginStyle.css" text="Submit" textFill="#f7e9db">
+                           <font>
+                              <Font name="Alexandria Bold" size="30.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="270.0" top="30.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                   </VBox>
                </children>
@@ -148,7 +166,6 @@
                            <items>
                               <Menu mnemonicParsing="false" text="General Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Fever" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Chills" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Fatigue/Weakness" />
@@ -176,7 +193,6 @@
                            <items>
                               <Menu mnemonicParsing="false" text="Head &amp; Neck Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Headache" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Dizziness / Vertigo" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Ringing in Ears (Tinnitus)" />
@@ -204,7 +220,6 @@
                            <items>
                               <Menu mnemonicParsing="false" text="Respitory Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Dry Cough" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Productive Cough (Phleghm)" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Shortness of Breath" />
@@ -232,7 +247,6 @@
                            <items>
                               <Menu mnemonicParsing="false" text="Cardiovascular Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Chest Pain" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Heart Palpatations (Racing Heart)" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Irregular Heartbeat" />
@@ -260,7 +274,6 @@
                            <items>
                               <Menu mnemonicParsing="false" text="Gastrointestinal Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Nausea / Vomiting" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Abdominal Pain / Cramping" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Bloating" />
@@ -288,7 +301,6 @@
                            <items>
                               <Menu mnemonicParsing="false" text="Musculoskeletal Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Joint Pain" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Muscle Aches (Myalgia)" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Back Pain" />
@@ -316,7 +328,6 @@
                            <items>
                               <Menu mnemonicParsing="false" text="Neurological Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Numbness or Tingling (Pins &amp; Needles)" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Confusion / Memory Issues" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Skin Rash" />
@@ -344,7 +355,6 @@
                            <items>
                               <Menu mnemonicParsing="false" text="Dermatological Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="None" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Dry / Flaky Skin " />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Redness (Erythema)" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Hives" />

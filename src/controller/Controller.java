@@ -67,6 +67,17 @@ public class Controller  {
 
     @FXML
     private TextArea symptomDisplayField;
+
+    @FXML
+    private TextField patientNameField;
+    @FXML
+    private TextField patientAgeField;
+    @FXML
+    private TextField patientContactField;
+    @FXML
+    private TextField patientSicknessField;
+    @FXML
+    private Label submitErrorLabel;
 //----------------------------------------------------------------------------------------------------------------
 
 
@@ -401,6 +412,56 @@ public class Controller  {
         else {
             // Resets it back to your original prompt if they uncheck everything
             mainBox.setText("Select a " + parentMenu.getText());
+        }
+    }
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
+    //Submit button to switch to accepted page
+    public void switchToAcceptPage(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+
+        String patientName = patientNameField.getText();
+        String patientAgeRaw = patientAgeField.getText();
+        String patientContact = patientContactField.getText();
+        String patientSickness = patientSicknessField.getText();
+
+        if (patientName.isBlank() || patientAgeRaw.isBlank() || patientContact.isBlank() || patientSickness.isBlank()) {
+            submitErrorLabel.setText("Please Fill in ALL the Fields");
+            return;
+        }
+
+        //To check the age to ensure they put an actual age
+        try {
+            //put the age value as integer from the raw information
+            int ageValue = Integer.parseInt(patientAgeRaw);
+
+            // Checks if it fits in age range of 0 - 127
+            if (ageValue < 0 || ageValue > 127) {
+                submitErrorLabel.setText("Age Must Be Between 0 and 127");
+                return;
+            }
+
+            //Puts the final age as the byte data type
+            byte finalAge = (byte) ageValue;
+
+
+            //Scene Switch (Only happens if parsing and range checks pass)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/acceptedPage/acceptedPage.fxml"));
+            //reads the FXML file
+            Parent root = loader.load();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+        catch (NumberFormatException e) {
+            //This occurs if the user enters a string or a symbol
+            submitErrorLabel.setText("Age must be a whole number!");
         }
     }
 }
