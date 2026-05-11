@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 import javax.swing.*;
@@ -457,6 +459,25 @@ public class Controller  {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+
+            //Adds a delay of 4 seconds for the user to be in the accepted page before being redirected
+            PauseTransition delay = new PauseTransition(Duration.seconds(4));
+
+            //When the 4 seconds is finished
+            delay.setOnFinished(e -> {
+                try {
+                    // Load the Home Login page
+                    Parent loginRoot = FXMLLoader.load(getClass().getResource("../views/homeLogin/HomeLoginPage.fxml"));
+                    stage.setScene(new Scene(loginRoot));
+                }
+                catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
+
+            //Start the countdown
+            delay.play();
 
         }
         catch (NumberFormatException e) {
