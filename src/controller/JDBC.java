@@ -8,10 +8,11 @@ public class JDBC {
     private final HashMap<String, String> DOCTORUSERNAME = new HashMap<>();
     private LinkedList Doctor_patientsLL = new LinkedList();
     private BinaryHeap Doctor_patientsBH = new BinaryHeap(10); //BINARY HEAP SIZE CURRENTLY 10
+    private final HashMap<String, Integer> SEVERITYSCORE = new HashMap<>();
 
 
 
-
+//----------------------------------------------------------------------------------------------------------------
 
 
     //Doctor login information (Gmail and Password)
@@ -46,6 +47,9 @@ public class JDBC {
     }
 
 
+
+
+//----------------------------------------------------------------------------------------------------------------
 
 
 
@@ -84,6 +88,10 @@ public class JDBC {
 
 
 
+//----------------------------------------------------------------------------------------------------------------
+
+
+
 
 
     //Doctor patient information in linked list(Gmail and Username)
@@ -110,7 +118,6 @@ public class JDBC {
             this.Doctor_patientsLL.insert(Doctor_patientsLL, doctorGmail, patientName, patientAge, patientSickness, patientContact, patientSeverity);
         }
 
-        LinkedList.printList(Doctor_patientsLL);
 
         //Close all connections for memory efficiency
         rs.close();
@@ -122,6 +129,12 @@ public class JDBC {
     public LinkedList getPatientListLL(){
         return Doctor_patientsLL;
     }
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------
 
 
 
@@ -152,7 +165,6 @@ public class JDBC {
             this.Doctor_patientsBH.insert(data);
         }
 
-        Doctor_patientsBH.printHeapArray();
 
         //Close all connections for memory efficiency
         rs.close();
@@ -165,4 +177,71 @@ public class JDBC {
         return Doctor_patientsBH;
     }
 
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+    public void createSeverityConnection() throws ClassNotFoundException, SQLException{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Odyssey_Data", "root", "testArea1");
+        System.out.println("SQL Database for Severity Initialize");
+
+        //statement class for query execution to SQL
+        Statement state = connection.createStatement();
+
+        //query to SQL
+        ResultSet rs = state.executeQuery("SELECT * FROM `Odyssey_Data`.`sickness_severity_score`");
+
+
+        //While result of the table still has next keep inputting into the hashmap
+        while(rs.next()){
+            String sickness = rs.getString("sickness_name");
+            int severity = rs.getInt("sickness_severity");
+            this.SEVERITYSCORE.put(sickness, severity);
+        }
+
+        //Close all connections for memory efficiency
+        rs.close();
+        state.close();
+        connection.close();
+    }
+
+    //returns the hashmap results
+    public HashMap<String, Integer> getSeverityScore(){
+        return this.SEVERITYSCORE;
+    }
+
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+    //Insert patient into SQL table
+    public void insertPatient(String doctorGmail, String name, byte age, String sickness, String contact, int severity) throws SQLException{
+        //Query to input data into the table
+        String query  = "INSERT INTO doctor_information_patients (doctor_GMAIL, patient_name, patient_age, patient_sickness, patient_contact, patient_severity) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Odyssey_Data", "root", "testArea1");
+
+             //statement to update the query with the right value
+             PreparedStatement statement = conn.prepareStatement(query)) {
+
+            statement.setString(1, doctorGmail);
+            statement.setString(2, name);
+            statement.setByte(3, age);
+            statement.setString(4, sickness);
+            statement.setString(5, contact);
+            statement.setInt(6, severity);
+
+            statement.executeUpdate();
+        }
+
+    }
+
 }
+
+
+

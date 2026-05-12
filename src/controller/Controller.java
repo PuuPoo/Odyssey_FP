@@ -421,20 +421,25 @@ public class Controller  {
     //----------------------------------------------------------------------------------------------------------------
 
 
-
-
     //Submit button to switch to accepted page
     public void switchToAcceptPage(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+
+        DATABASE.createSeverityConnection();
 
         String patientName = patientNameField.getText();
         String patientAgeRaw = patientAgeField.getText();
         String patientContact = patientContactField.getText();
         String patientSickness = patientSicknessField.getText();
+        int patientSeverity = 0;
 
+
+        //Checks if any of the fields is blank
         if (patientName.isBlank() || patientAgeRaw.isBlank() || patientContact.isBlank() || patientSickness.isBlank()) {
             submitErrorLabel.setText("Please Fill in ALL the Fields");
             return;
         }
+
+
 
         //To check the age to ensure they put an actual age
         try {
@@ -447,8 +452,38 @@ public class Controller  {
                 return;
             }
 
+
+
             //Puts the final age as the byte data type
-            byte finalAge = (byte) ageValue;
+            byte patientAge = (byte) ageValue;
+
+
+            //Calculates the amount of the severity based on their input in the field
+            for(String symptom : patientSelectedSymptoms){
+                if(DATABASE.getSeverityScore().containsKey(symptom)){
+                    patientSeverity += DATABASE.getSeverityScore().get(symptom);
+                }
+            }
+
+            //RNG for the doctor
+            int randomDoctorNum = (int)(Math.random() * 3) + 1;
+
+            //Assigns based on the RNG number
+            String patientDoctorGmail;
+            if (randomDoctorNum == 1) {
+                patientDoctorGmail = "doctor1@gmail.com";
+            }
+            else if (randomDoctorNum == 2) {
+                patientDoctorGmail = "doctor2@gmail.com";
+            }
+            else {
+                patientDoctorGmail = "doctor3@gmail.com";
+            }
+
+            DATABASE.insertPatient(patientDoctorGmail, patientName, patientAge, patientSickness, patientContact, patientSeverity);
+
+
+
 
 
             //Scene Switch (Only happens if parsing and range checks pass)
