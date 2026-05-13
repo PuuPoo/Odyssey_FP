@@ -355,7 +355,7 @@
                            <items>
                               <Menu mnemonicParsing="false" text="Dermatological Symptom">
                                  <items>
-                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Dry / Flaky Skin " />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Dry / Flaky Skin" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Redness (Erythema)" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Hives" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#handleSymptomClick" text="Blisters" />

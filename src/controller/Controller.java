@@ -42,6 +42,8 @@ public class Controller  {
     private Label loginMessage;
     @FXML
     private Label doctorName;
+    @FXML
+    private Label doctorID;
 
 
 
@@ -138,6 +140,7 @@ public class Controller  {
 
         //sets the label
         nextController.doctorName.setText(doctorUsername);
+        nextController.doctorID.setText(gmail);
 
         //Checks if the controller is fully loaded
         if (nextController.patientAction != null) {
