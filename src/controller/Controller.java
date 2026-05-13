@@ -437,7 +437,7 @@ public class Controller  {
 
 
         //Checks if any of the fields is blank
-        if (patientName.isBlank() || patientAgeRaw.isBlank() || patientContact.isBlank() || patientSickness.isBlank()) {
+        if (patientName.isBlank() || patientAgeRaw.isBlank() || patientContact.isBlank() || patientSickness.isBlank() || symptomDisplayField.getText().isBlank()) {
             submitErrorLabel.setText("Please Fill in ALL the Fields");
             return;
         }
