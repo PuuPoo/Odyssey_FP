@@ -118,6 +118,8 @@ public class JDBC {
             this.Doctor_patientsLL.insert(Doctor_patientsLL, doctorGmail, patientName, patientAge, patientSickness, patientContact, patientSeverity);
         }
 
+        //this.Doctor_patientsLL.insertX(Doctor_patientsLL, 1000); //Adds x amount of patients
+
 
         //Close all connections for memory efficiency
         rs.close();
@@ -164,6 +166,8 @@ public class JDBC {
             Appointment data = new Appointment(doctorGmail, patientName, patientAge, patientSickness, patientContact, patientSeverity);
             this.Doctor_patientsBH.insert(data);
         }
+
+        Doctor_patientsBH.insertX(1000); //Adds x amount of patients
 
 
         //Close all connections for memory efficiency

@@ -144,8 +144,8 @@ public class Controller  {
 
         //Checks if the controller is fully loaded
         if (nextController.patientAction != null) {
-            nextController.patientTableInitializeLL(gmail); //Depending on which data structure to load into patients table
-            //nextController.patientTableInitializeBH(gmail);
+            //nextController.patientTableInitializeLL(gmail); //Depending on which data structure to load into patients table
+            nextController.patientTableInitializeBH(gmail);
         }
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
