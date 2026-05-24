@@ -12,6 +12,12 @@ public class LinkedList {
         int patientSeverity;
         Node next;
 
+
+        //----------------------------------------------------------------------------------------------------------------
+
+
+
+
         Node(String gmail, String patientName, byte patientAge, String patientSickness, String patientContact, int patientSeverity){ //Constructor
             this.gmail = gmail;
             this.patientName = patientName;
@@ -22,6 +28,16 @@ public class LinkedList {
             next = null;
         }
     }
+
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 
     public static LinkedList insert(LinkedList list, String gmail, String patientName, byte patientAge, String patientSickness, String patientContact, int severity){
         //Makes new node with the new data
@@ -52,6 +68,16 @@ public class LinkedList {
         return list;
     }
 
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
     // Method to print the LinkedList.
     public static void printList(LinkedList list)
     {
@@ -68,5 +94,55 @@ public class LinkedList {
             currNode = currNode.next;
         }
     }
+
+
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+    //inserting x amount of nodes into the linkedlist
+    public void insertX(LinkedList list, int x) {
+        //loop for insertion
+        for(int i = 0; i < x; i++){
+
+            byte age = (byte) (Math.random() * 100 + 1);
+            int severity = (int) (Math.random() * 50);
+            int randomDocNum = (int) (Math.random() * 3) + 1;
+            String gmail = "doctor" + randomDocNum + "@gmail.com";
+
+
+            Node newNode = new Node(gmail, "name" + (i + 1), age, "sickness" + (i + 1), "contact" + (i + 1), severity);
+
+            //Checks if the linked list is empty or if the new data's patientSeverity is larger than the head
+            if (list.head == null || severity > list.head.patientSeverity){
+                newNode.next = list.head;
+                list.head = newNode;
+            }
+
+            // Else traverse till finds where the data will be inputted
+            // and insert the newNode there
+            else{
+                Node current = list.head;
+
+                //keeps going until input data's patientSeverity is larger than the next following data's patientSeverity
+                while(current.next != null && current.next.patientSeverity > severity){
+                    current = current.next;
+                }
+
+                // Insert the data node
+                newNode.next = current.next;
+                current.next = newNode;
+            }
+
+        }
+    }
+
+
+
+
 }
 

@@ -289,7 +289,12 @@ public class Controller  {
     }
 
 
+
     //----------------------------------------------------------------------------------------------------------------
+
+
+
+
 
     //Patient Table Information Data Initializer for Binary Heap
     public void patientTableInitializeBH(String gmail) throws SQLException, ClassNotFoundException{
@@ -372,6 +377,11 @@ public class Controller  {
 
 
     //----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
     @FXML
     void handleSymptomClick(ActionEvent event){
         //Reads the clicked text from the menu Item
@@ -422,6 +432,8 @@ public class Controller  {
 
 
     //----------------------------------------------------------------------------------------------------------------
+
+
 
 
     //Submit button to switch to accepted page

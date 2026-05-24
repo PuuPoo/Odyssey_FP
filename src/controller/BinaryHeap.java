@@ -10,6 +10,9 @@ public class BinaryHeap {
     // Current number of elements in the heap
     private int currentHeapSize;
 
+//----------------------------------------------------------------------------------------------------------------
+
+
 
     // Constructor
     public BinaryHeap(int n) {
@@ -17,6 +20,13 @@ public class BinaryHeap {
         heapArray = new Appointment[capacity];
         currentHeapSize = 0;
     }
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
 
     //inserting into the heap
     public void insert(Appointment data) {
@@ -32,6 +42,15 @@ public class BinaryHeap {
         // 2. Bubble Up
         bubbleUp(index);
     }
+
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
     private void bubbleUp(int index) {
         //Calculate where the parent is located in the array
@@ -50,6 +69,13 @@ public class BinaryHeap {
         }
     }
 
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
     public Appointment poll() {
         if (currentHeapSize == 0) {
             return null; //Check if heap is empty
@@ -64,6 +90,13 @@ public class BinaryHeap {
         bubbleDown(0); //Bubble down the lowest value to maintain order
         return root;
     }
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
     private void bubbleDown(int index) {
@@ -88,12 +121,25 @@ public class BinaryHeap {
         }
     }
 
+
+
+    //----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
     //Bubble swap
     private void swap(int i, int j) {
         Appointment temp = heapArray[i];
         heapArray[i] = heapArray[j];
         heapArray[j] = temp;
     }
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------
 
 
 
@@ -105,5 +151,40 @@ public class BinaryHeap {
         }
     }
 
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------
+
+
+
+
+    //inserting x amount of nodes into the binary heap
+    public void insertX(int x) {
+        //loop for insertion
+        for(int i = 0; i < x; i++){
+
+            //checks size
+            if (currentHeapSize == capacity) {
+                return; // Heap is full
+            }
+
+
+
+            byte age = (byte) (Math.random() * 100 + 1);
+            int severity = (int) (Math.random() * 50);
+            int randomDocNum = (int) (Math.random() * 3) + 1;
+            String gmail = "doctor" + randomDocNum + "@gmail.com";
+
+            Appointment newInsert = new Appointment(gmail, "name" + (i + 1), age, "sickness" + (i + 1), "contact" + (i + 1), severity);
+
+            int index = currentHeapSize;
+            heapArray[index] = newInsert;
+            currentHeapSize++;
+            bubbleUp(index);
+
+        }
+    }
 
 }

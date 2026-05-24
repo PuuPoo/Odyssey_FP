@@ -7,7 +7,7 @@ public class JDBC {
     private final HashMap<String, String>  DOCTORLOGIN = new HashMap<>();
     private final HashMap<String, String> DOCTORUSERNAME = new HashMap<>();
     private LinkedList Doctor_patientsLL = new LinkedList();
-    private BinaryHeap Doctor_patientsBH = new BinaryHeap(10); //BINARY HEAP SIZE CURRENTLY 10
+    private BinaryHeap Doctor_patientsBH = new BinaryHeap(10000); //BINARY HEAP SIZE CURRENTLY 10
     private final HashMap<String, Integer> SEVERITYSCORE = new HashMap<>();
 
 
