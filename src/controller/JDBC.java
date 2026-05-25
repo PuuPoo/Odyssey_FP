@@ -118,7 +118,19 @@ public class JDBC {
             this.Doctor_patientsLL.insert(Doctor_patientsLL, doctorGmail, patientName, patientAge, patientSickness, patientContact, patientSeverity);
         }
 
-        //this.Doctor_patientsLL.insertX(Doctor_patientsLL, 1000); //Adds x amount of patients
+
+        /*
+        long startTime = System.nanoTime();
+        this.Doctor_patientsLL.insertX(Doctor_patientsLL, 1000); //Adds x amount of patients
+
+        long endTime = System.nanoTime();
+        long durationNs = endTime - startTime;
+        double durationMs = durationNs / 1_000_000.0;
+
+        System.out.println("Milliseconds: " + durationMs + " ms");
+        */
+
+
 
 
         //Close all connections for memory efficiency
@@ -167,7 +179,16 @@ public class JDBC {
             this.Doctor_patientsBH.insert(data);
         }
 
+
+        //Benchmark (runtime) purposes
+        long startTime = System.nanoTime();
         Doctor_patientsBH.insertX(1000); //Adds x amount of patients
+
+        long endTime = System.nanoTime();
+        long durationNs = endTime - startTime;
+        double durationMs = durationNs / 1_000_000.0;
+
+        System.out.println("Milliseconds: " + durationMs + " ms");
 
 
         //Close all connections for memory efficiency
