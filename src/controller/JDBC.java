@@ -179,7 +179,7 @@ public class JDBC {
             this.Doctor_patientsBH.insert(data);
         }
 
-
+        /*
         //Benchmark (runtime) purposes
         long startTime = System.nanoTime();
         Doctor_patientsBH.insertX(1000); //Adds x amount of patients
@@ -195,6 +195,8 @@ public class JDBC {
         rs.close();
         state.close();
         connection.close();
+
+         */
     }
 
     //The getter for the binary heap data
